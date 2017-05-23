@@ -8,7 +8,7 @@ module.exports = function(grunt) {
   		},
   		dist: {
   			files: {
-  				'main.css': 'main.sass'
+  				'*.css': '*.sass'
   			}
   		}
   	},
@@ -23,28 +23,28 @@ module.exports = function(grunt) {
   			}]
   		}
   	}
-    watch: {
-      scripts: {
-        files: ['sass/*.sass'],
-        tasks: ['sass'],
-        options: {
-            spawn: false,
+   	 watch: {
+      		scripts: {
+        	files: ['sass/*.sass'],
+       		tasks: ['sass'],
+        	options: {
+            		spawn: false,
         },
       }
     }
-    browserSync: {
-            dev: {
-                bsFiles: {
-                    src : [
-                        'app/css/*.css',
-                        'app/*.html'
-                    ]
-                },
-                options: {
-                    watchTask: true,
-                    server: './app'
-                }
-            }
+    	browserSync: {
+            	dev: {
+                	bsFiles: {
+                   	 src : [
+                      	  'app/css/*.css',
+                       	 'app/*.html'
+                    	 ]
+                	},
+               		options: {
+                   	 watchTask: true,
+                    	 server: './app'
+               		}
+           	}
         }
   });
   // Load the plugins tasks

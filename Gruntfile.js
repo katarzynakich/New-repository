@@ -24,21 +24,36 @@ module.exports = function(grunt) {
   		}
   	}
     watch: {
-        scripts: {
-            files: ['sass/*.sass'],
-            tasks: ['sass'],
-            options: {
-                spawn: false,
-            },
-        }
+      scripts: {
+        files: ['sass/*.sass'],
+        tasks: ['sass'],
+        options: {
+            spawn: false,
+        },
+      }
     }
-
+    browserSync: {
+            dev: {
+                bsFiles: {
+                    src : [
+                        'app/css/*.css',
+                        'app/*.html'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    server: './app'
+                }
+            }
+        }
   });
   // Load the plugins tasks
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-browser-sync');
+
   // Default task(s).
 
-  grunt.registerTask('default', ['sass', 'imagemin']);
+  grunt.registerTask('default', ['sass', 'imagemin', 'watch', 'browserSync']);
 };
